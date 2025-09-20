@@ -1,9 +1,9 @@
 [phases.setup]
-nixPkgs = ["python311", "mysql"]
+nixPkgs = ["python311", "pip", "mysql"]
 
 [phases.install]
 cmds = [
-  "cd backend && pip install -r requirements.txt"
+  "python -m pip install -r requirements.txt"
 ]
 
 [start]
