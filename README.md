@@ -53,8 +53,8 @@ Design and implement a minimal yet powerful AI agent that can:
 ## 🛠️ AI Agent & Tools
 The LangGraph agent uses Gemini to interpret natural-language requests and call Python tool functions:
 
-| Tool Name    | Description                                                                 |
-|--------------|-----------------------------------------------------------------------------|
+| Tool Name     | Description                                                                 |
+|---------------|-----------------------------------------------------------------------------|
 | **create_task** | Add a new task with title, description, optional `due_date` or `priority`. |
 | **update_task** | Modify fields (title, status, etc.) by ID or name. Supports toggling status (e.g., “mark task X as done”). |
 | **delete_task** | Remove a task by ID or name match.                                        |
@@ -66,102 +66,3 @@ Each tool is registered as a LangGraph tool and callable directly by the agent.
 ---
 
 ## 🏗️ Project Structure
-ai-task-agent/
-├─ backend/
-│ ├─ app/
-│ │ ├─ main.py # FastAPI entry point + WebSocket
-│ │ ├─ agent/ # LangGraph agent & tools
-│ │ ├─ models/ # SQLAlchemy/Tortoise ORM models
-│ │ ├─ routes/ # API routes
-│ │ └─ schemas/ # Pydantic schemas
-│ ├─ requirements.txt
-│ └─ Dockerfile
-│
-├─ frontend/
-│ ├─ pages/
-│ ├─ components/ # Chat UI + Task list UI
-│ ├─ package.json
-│ └─ tailwind.config.js
-│
-└─ docs/ # Architecture diagrams, API docs
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- PostgreSQL
-- Google Gemini API Key
-
-### Local Development Setup
-
-#### Backend Setup
-```bash
-# Clone the repo
-git clone https://github.com/pratik7mo/AI-TaskManagement.git
-cd AI-TaskManagement/backend
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set environment variables (.env)
-DATABASE_URL=postgresql://user:pass@localhost:5432/tasks
-GEMINI_API_KEY=your_gemini_key
-
-# Run the server
-uvicorn main:app --reload
-```
-
-#### Frontend Setup
-```bash
-cd ../frontend
-npm install
-npm run dev
-```
-
-Open http://localhost:3000 in your browser.
-
-### 🚀 Railway Deployment
-
-This project is optimized for Railway deployment without Docker. See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for detailed deployment instructions.
-
-**Quick Railway Deploy:**
-1. Connect your GitHub repository to Railway
-2. Add environment variables in Railway dashboard
-3. Railway will automatically deploy your FastAPI backend
-4. Your app will be available at `https://your-app.railway.app`
-
-## 💡 Usage
-Open the app in your browser.
-
-Start chatting with the AI:
-
-“Create a high priority task to finish the report by tomorrow.”
-
-“List all tasks due this week.”
-
-“Mark the report task as done.”
-
-Watch the task list update in real time.
-
-## 🔮 Future Enhancements
-Multi-user authentication & team workspaces.
-
-Advanced natural-language filtering (e.g., “tasks due next Friday with high priority”).
-
-Push notifications and email reminders.
-
-Integrate calendar sync (Google Calendar, Outlook).
-
-## 🤝 Contributing
-Pull requests and feature suggestions are welcome!
-Please open an issue first to discuss changes.
-
-## 📜 License
-This project is licensed under the MIT License.
-
-## 📧 Contact
-Your Name – pratikkumarsahoo5@gmail.com
-GitHub: https://github.com/pratik7mo/AI-TaskManagement
