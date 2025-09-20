@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python311", "pip", "mysql"]
+nixPkgs = ["python311", "pip"]
 
 [phases.install]
 cmds = [
