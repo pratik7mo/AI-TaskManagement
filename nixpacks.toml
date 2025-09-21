@@ -6,7 +6,6 @@ nixPkgsExclude = ["mysql"]
 [phases.install]
 # Install dependencies from backend/requirements.txt
 cmds = [
-  "python -m ensurepip --upgrade",
   "python -m pip install --upgrade pip setuptools wheel",
   "python -m pip install -r backend/requirements.txt"
 ]
