@@ -1,12 +1,13 @@
 [phases.setup]
 # Install Python 3.11 and pip from Nix
-nixPkgs = ["python311", "python311Packages.pip"]
+nixPkgs = ["python311", "python311Packages.pip", "python311Packages.setuptools", "python311Packages.wheel"]
 nixPkgsExclude = ["mysql"]
 
 [phases.install]
 # Install dependencies from backend/requirements.txt
 cmds = [
-  "python -m pip install --upgrade pip",
+  "python -m ensurepip --upgrade",
+  "python -m pip install --upgrade pip setuptools wheel",
   "python -m pip install -r backend/requirements.txt"
 ]
 
