@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 # Add the parent directory to the path so we can import our models
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from database import Base
+from ..database import Base
 load_dotenv()
 
 # this is the Alembic Config object, which provides

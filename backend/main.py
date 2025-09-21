@@ -13,9 +13,9 @@ if __package__:
     from .models import TaskCreate, TaskUpdate, TaskResponse, ChatMessage, ChatRequest
     from .agent import process_user_message
 else:  # When started as a script from inside `backend/`
-    from database import get_db, create_tables, Task
-    from models import TaskCreate, TaskUpdate, TaskResponse, ChatMessage, ChatRequest
-    from agent import process_user_message
+    from .database import get_db, create_tables, Task
+    from .models import TaskCreate, TaskUpdate, TaskResponse, ChatMessage, ChatRequest
+    from .agent import process_user_message
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

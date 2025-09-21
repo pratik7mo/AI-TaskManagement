@@ -2,7 +2,7 @@ from typing import List, Optional, Dict, Any
 if __package__:
     from .database import Task, TaskStatus, TaskPriority, SessionLocal
 else:
-    from database import Task, TaskStatus, TaskPriority, SessionLocal
+    from .database import Task, TaskStatus, TaskPriority, SessionLocal
 from datetime import datetime
 
 def get_db_session():

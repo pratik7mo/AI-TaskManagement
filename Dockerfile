@@ -26,11 +26,11 @@ RUN pip install --upgrade pip setuptools wheel && \
 # Copy the rest of the application
 COPY . /app/
 
-# Make startup script executable
-RUN chmod +x /app/start.sh
+# Copy env.example as .env for Railway deployment
+RUN cp /app/backend/env.example /app/backend/.env
 
 # Expose port (Railway will set the PORT environment variable)
 EXPOSE $PORT
 
 # Set the command to run the application
-CMD ["/app/start.sh"]
+CMD ["sh", "-c", "echo 'Starting AI Task Management API on port $PORT' && python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT"]

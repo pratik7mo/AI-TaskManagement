@@ -3,12 +3,8 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from datetime import datetime
 import enum
 import os
-import pymysql
 from dotenv import load_dotenv
 from pathlib import Path
-
-# Register PyMySQL as the MySQL driver
-pymysql.install_as_MySQLdb()
 
 # Always load the .env that sits next to this file, regardless of CWD
 # This prevents surprises when the server is started from the project root
@@ -16,11 +12,12 @@ pymysql.install_as_MySQLdb()
 load_dotenv(dotenv_path=Path(__file__).with_name('.env'))
 
 # This will first check the .env file for the DATABASE_URL, if not found then it will use the default value given below
-# Default targets a locally running MySQL server on the developer machine.
-DATABASE_URL = os.getenv("DATABASE_URL", "mysql+pymysql://root:7894@localhost:3306/task_management")
+# Default uses SQLite for Railway deployment compatibility
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///task_management.db")
 
 # It is like getting key to cabinet and opening it
-engine = create_engine(DATABASE_URL)
+# Force SQLite dialect to avoid MySQL detection issues
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
 #  This is the session maker which is like a key to the cabinet
 # and autocommit and autoflush is set to False so that the changes are not committed to the database until the session is committed and flushed

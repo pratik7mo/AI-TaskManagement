@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
-from database import TaskStatus, TaskPriority
+from .database import TaskStatus, TaskPriority
 
 # Inside Field ... means that the field is required
 class TaskCreate(BaseModel):
