@@ -1,13 +1,8 @@
-#!/bin/bash
-set -e
+#!/bin/sh
 
-echo "🚀 Starting AI PowerTMS Application..."
+# Set default port if not provided
+export PORT=${PORT:-8000}
 
-# Install backend dependencies
-echo "📦 Installing backend dependencies..."
-cd backend
-pip install -r requirements.txt
-
-# Start backend
-echo "🔧 Starting FastAPI backend..."
-uvicorn main:app --host 0.0.0.0 --port $PORT
+# Start the FastAPI application
+echo "Starting AI Task Management API on port $PORT"
+python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT

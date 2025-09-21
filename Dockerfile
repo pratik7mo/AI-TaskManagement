@@ -26,8 +26,11 @@ RUN pip install --upgrade pip setuptools wheel && \
 # Copy the rest of the application
 COPY . /app/
 
-# Expose port
-EXPOSE 8000
+# Make startup script executable
+RUN chmod +x /app/start.sh
+
+# Expose port (Railway will set the PORT environment variable)
+EXPOSE $PORT
 
 # Set the command to run the application
-CMD ["python", "-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/app/start.sh"]
